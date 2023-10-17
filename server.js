@@ -11,6 +11,15 @@ const db = mysql.createPool({
     password: "mymyajaez",
     database: "ajaez"
 })
+db.getConnection((err, connection) => {
+    if (err) {
+        console.error("Database connection error: " + err.message);
+        // 여기에서 오류 처리 로직을 추가합니다.
+    } else {
+        // 연결이 성공한 경우, connection을 사용하여 쿼리를 실행하거나 다른 작업을 수행합니다.
+        console.log('연결성공')
+    }
+});
 app.use(cors());
 app.use(bodyParser.json()); // JSON 바디 파싱을 위한 설정
 app.get('/GetPopularPost', (req, res) => {
